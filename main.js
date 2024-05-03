@@ -109,9 +109,11 @@ function drawBricks() {
 	}
 }
 function collisionDetection() {
+	//recupera el bloque actual
 	for (let c = 0; c < bricksColumnCounts; c++) {
 		for (let r = 0; r < bricksRowCount; r++) {
 			const currentBrick = bricks[c][r]
+			//si esta golpeado el bloque continua
 			if (currentBrick.status === BRICK_STATUS.HITTED) continue;
 
 			const isBallSameXAsBrick =
@@ -119,6 +121,7 @@ function collisionDetection() {
 			const isBallSameYAsBrick =
 				y > currentBrick.y && y < currentBrick.y + brickHeight
 
+			//si la bola esta en la misma eje de x e y que el bloque es que hay una colision y lo ha golpeado
 			if(isBallSameXAsBrick && isBallSameYAsBrick){
 				dy=-dy
 				currentBrick.status = BRICK_STATUS.HITTED
